@@ -9,6 +9,11 @@ import Cart from './pages/Cart.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import AllProducts from './pages/AllProducts.jsx'
 
+// redux store
+import { Provider } from 'react-redux'
+import store from './store/store.js'
+
+
 // color for light mode: #EEF0EF
 
 const router = createBrowserRouter([
@@ -29,7 +34,7 @@ const router = createBrowserRouter([
         element: <Contact/>
       },
       {
-        path: "/product",
+        path: "/product/:id",
         element: <Product/>
       },
       {
@@ -50,6 +55,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}/>
+    <Provider store={store}>
+      <RouterProvider router={router}  />
+    </Provider>
   </StrictMode>,
 )

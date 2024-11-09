@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom'
+import { fetchAllProducts } from '../../store/Slices/productsSlice';
 
 function Header() {
+    const dispatch = useDispatch()
+  
+    useEffect(() => {
+      dispatch(fetchAllProducts())
+    }, []);
+
   return (
     <header>
         <div className='py-4 px-44 

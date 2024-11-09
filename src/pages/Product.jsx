@@ -1,20 +1,41 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import {useParams } from 'react-router-dom'
+import { addToCart } from '../store/Slices/cartSlice'
 
 function Product() {
-  return (
+    const param = useParams()    
+    const products = useSelector(state => state.products)
+    let item = products.find((product) => product.id === +param.id)
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+    
+  return item && (
     <div className='flex items-center gap-2'>
         <div className='w-[40%]'>
-            <img src="https://m.media-amazon.com/images/I/719C6bJv8jL._SX679_.jpg" alt="" />
+            <img src={item.images[0]} alt="" />
         </div>
         <div className='w-[60%]'>
-            <h1 className='font-bold text-2xl mb-4 border-b-2 pb-2'>2022 Apple MacBook Air Laptop with M2 chip: 34.46 cm (13.6-inch) Liquid Retina Display, 8GB RAM, 256GB SSD Storage, Backlit Keyboard, 1080p FaceTime HD Camera. Works with iPhone/iPad; Midnight</h1>
+            <h1 className='font-bold text-2xl mb-4 border-b-2 pb-2'>{item.title}</h1>
             <div className='flex justify-between text-center'>
                 <div>
-                    <h2 className='text-2xl bg-gray-300 w-48 rounded-full px-4 py-2'>Price: $100</h2>
+                    <h2 className='text-2xl bg-gray-300 w-48 rounded-full px-4 py-2'>Price: ₹{Math.floor(item.price * 84)}</h2>
                     <p>Inclusive of all taxes</p>
                 </div>
                 <div>
-                    <button className='text-2xl bg-black w-48 hover:bg-gray-700 text-white px-4 py-2 rounded-full'>Add to Cart</button>
+                    <button 
+                        onClick={() => 
+                            dispatch(addToCart({
+                                id: item.id,
+                                title: item.title,
+                                image: item.images[0],
+                                price: Math.floor(item.price)
+                            }))} 
+                        className='text-2xl bg-black w-48 hover:bg-gray-700 text-white px-4 py-2 rounded-full'>Add to Cart</button>
                     <p>Free Delivery</p>
                 </div>
             </div>
@@ -39,19 +60,19 @@ function Product() {
 
             {/* features */}
             <div>
-                <h2 className='text-2xl font-bold mb-4 underline'>Features</h2>
-                <ul className='leading-6 grid grid-cols-2 gap-4'>
-                    <li><b>Brand:</b>	Apple</li>
-                    <li><b>Model Name:</b>	MacBook Air</li>
-                    <li><b>Screen Size:</b>	13.6</li>
-                    <li><b>Colour:</b>	Midnight</li>
-                    <li><b>Hard Disk Size:</b>	256 GB</li>
-                    <li><b>CPU Model:</b>	Others</li>
-                    <li><b>RAM Memory Installed Size:</b>	8 GB</li>
-                    <li><b>Operating System:</b>	Mac OS</li>
-                    <li><b>Special Feature:</b>	Portable, Backlit Keyboard, Thin</li>
-                    <li><b>Graphics Card Description:</b> Integrated</li>
+                <h2 className='text-2xl font-bold mb-4 underline'>Details</h2>
+                <ul className='leading-6 grid grid-cols-2 gap-4 mb-6'>
+                    <li><b>Brand:</b> {item.brand}</li>
+                    <li><b>Category </b>{item.category}</li>
+                    <li><b>Availability Status: </b>{item.availabilityStatus}</li>
+                    <li><b>Return Policy: </b>{item.returnPolicy}</li>
+                    <li><b>Ratings: </b>{item.rating}/5</li>
+                    <li><b>Shipping Information: </b>{item.shippingInformation}</li>
                 </ul>
+                <div>
+                    <h4 className=' text-xl font-bold mb-2 underline'>Description</h4>
+                    <p>{item.description}</p>
+                </div>
             </div>
         </div>
     </div>
