@@ -37,12 +37,13 @@ function Footer() {
             </div>
             <div>
                 <h3 className='text-2xl font-bold mb-4'>Download App</h3>
+                <img className='bg-white p-0.5 w-16 rounded-md mb-2' src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/QR_Code_Example.svg/552px-QR_Code_Example.svg.png?20111025115625" alt="" />
                 <small>Save $3 with App (New Users only)</small>
                 <div className='flex gap-2 mt-2'>
-                    <i className="fa-brands fa-facebook"></i>
-                    <i className="fa-brands fa-twitter"></i>
-                    <i className="fa-brands fa-instagram"></i>
-                    <i className="fa-brands fa-linkedin"></i>
+                    <i className="fa-brands fa-facebook hover:text-blue-400 "></i>
+                    <i className="fa-brands fa-twitter hover:text-blue-400"></i>
+                    <i className="fa-brands fa-instagram hover:text-blue-400"></i>
+                    <i className="fa-brands fa-linkedin hover:text-blue-400"></i>
                 </div>
             </div>
         </div>

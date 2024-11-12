@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Add to your CSS file */
+.scrollbar-custom {
+    @apply overflow-y-scroll;
+  }
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 5px;
+  }
+  .scrollbar-custom::-webkit-scrollbar-track {
+    @apply bg-gray-200;
+  }
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded-lg;
+  }
+  .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-700;
+  }
+  

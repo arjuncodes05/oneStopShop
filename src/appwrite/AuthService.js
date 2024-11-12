@@ -16,10 +16,41 @@ export class AuthService{
 
     async login(email, password){
         try {
-            const res =  await this.account.createEmailPasswordSession(email, password)
-            console.log(res);
+            return await this.account.createEmailPasswordSession(email, password)
         } catch (err) {
             console.log("Appwrite service :: login() :: ", err);
+            return false 
+        }
+    }
+
+    async getUser(){
+        try {
+            return await this.account.get()
+        } catch (error) {
+            console.log("Appwrite service :: login() :: ", err);
+            return false 
+        }
+    }
+
+    async signout(){
+        try{
+            return await this.account.deleteSessions()
+        } catch(err) {
+            console.log("Appwrite service :: signout() :: ", err);
+            return false 
+        }
+    }
+
+    async signup(name, email, password){
+        try {
+            return await this.account.create(
+                ID.unique(),
+                email,
+                password,
+                name
+            )
+        } catch (err) {
+            console.log("Appwrite service :: signup() :: ", err);
             return false 
         }
     }

@@ -11,9 +11,7 @@ function Home() {
         title="iPhone 15"
         discount="Up to 10% off Voucher"
       />
-      {/* <BrowseByCategory/> */}
       <ExploreProducts/>
-      {/* <NewArrivals/> */}
       <OurPromise/>
     </div>
   )
