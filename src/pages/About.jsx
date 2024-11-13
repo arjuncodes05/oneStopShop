@@ -7,7 +7,7 @@ function About() {
   }, []);
 
   return (
-    <div>
+    <div className='lg:h-creen'>
       <h1 className='text-2xl font-bold mb-4'>About Us</h1>
       <p>
           Welcome to oneStopShop, where we believe that quality and convenience should go hand in hand. Founded with a passion for exceptional products and a seamless shopping experience, oneStopShop is here to bring you closer to the things you love.

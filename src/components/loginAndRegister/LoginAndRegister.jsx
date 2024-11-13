@@ -11,7 +11,7 @@ function LoginAndRegister({name = '', setName = '', email, setEmail, password, s
     <div
     className=' backdrop-blur-md flex justify-center  items-center w-full h-screen bg-slate-200'
     >
-    <div className='w-[30%] border-2 rounded-md overflow-hidden'>
+    <div className='w-[420px] min-w-[300px] border-2 rounded-md overflow-hidden mx-10'>
       <div className='w-full text-center font-bold text-2xl bg-slate-900 p-2 mb-1 '>
           <h1 className='text-6xl mb-2 text-white'>{pageIs.includes('signup') ? 'Sign Up' : 'Login' }</h1>
           <h2 className='text-[#FF204E]'>{pageIs.includes('signup') ? 'Create an account' : 'Welcome Back' }</h2>

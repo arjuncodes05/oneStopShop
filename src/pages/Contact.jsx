@@ -2,10 +2,10 @@ import React from 'react'
 
 function Contact() {
   return (
-    <div className='flex gap-4'>
-      <div className='border-2 rounded-sm p-4 w-[50%]'>
-        <h1 className='text-4xl font-bold mb-4'>Contact Us</h1>
-        <h2 className='mb-4 font-semibold text-lg'>Feel free to ask anything!</h2>
+    <div className='flex gap-4 flex-col lg:flex-row'>
+      <div className='border-2 rounded-sm p-4 lg:w-[50%] w-full lg:h-auto h-[450px]'>
+        <h1 className='sm:text-4xl text-2xl font-bold mb-4'>Contact Us</h1>
+        <h2 className='mb-4 font-semibold sm:text-lg text-md'>Feel free to ask anything!</h2>
         <hr />
         <form action="">
           <div className='flex flex-col my-4 gap-1'>
@@ -26,8 +26,8 @@ function Contact() {
         </form>
       </div>
 
-      <div className='w-[40%]'>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3442.4686291385974!2d77.85642127535799!3d30.36604807476323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390f2a395135f75d%3A0xc3ede1afe67a8f30!2sHaripur%20Rd%2C%20Central%20Hope%20Town%2C%20Selakui%2C%20Uttarakhand%20248011!5e0!3m2!1sen!2sin!4v1731254540640!5m2!1sen!2sin" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div className='lg:w-[50%] w-full h-[450px] '>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3442.4686291385974!2d77.85642127535799!3d30.36604807476323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390f2a395135f75d%3A0xc3ede1afe67a8f30!2sHaripur%20Rd%2C%20Central%20Hope%20Town%2C%20Selakui%2C%20Uttarakhand%20248011!5e0!3m2!1sen!2sin!4v1731254540640!5m2!1sen!2sin" width="100%" height="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   )
