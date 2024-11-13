@@ -70,26 +70,24 @@ function Header() {
             {/* hamburger  */}
             <div className='relative lg:hidden'>
                 <h1
-                    onClick={() => setShowHamburger(true)}
-                    ><i className="fa-solid fa-bars text-2xl"></i></h1>
+                    onClick={() => setShowHamburger(prev => !prev)}
+                    ><i className={`${!showHamburger ? 'fa-bars' : 'fa-angles-down'} fa-solid  text-2xl`}></i></h1>
                 { showHamburger && (
-                    <div className='absolute bg-slate-100 border-slate-300 border rounded-sm top-0 left-[-30px] sm:w-60 min-w-[125px] z-10'>
-                        <ul className='flex flex-col gap-2 text-sm font-semibold md:font-normal md:text-base relative pt-10'>
-                            <i onClick={() => setShowHamburger(false)}
-                                className="fa-solid fa-circle-xmark absolute right-2 top-2 "></i>
-                            <Link onClick={() => setShowHamburger(false)} to="/" className='border-b border-gray-300 px-4 pb-2 hover:shadow-md' >Home</Link>
-                            <Link onClick={() => setShowHamburger(false)} to="/products/all" className='border-b border-gray-300 px-4 py-2 hover:shadow-md' >Products</Link>
-                            <Link onClick={() => setShowHamburger(false)} to="/contact" className='border-b border-gray-300 px-4 py-2 hover:shadow-md' >Contact</Link>
-                            <Link onClick={() => setShowHamburger(false)} to="/about" className='border-b border-gray-300 px-4 py-2 hover:shadow-md' >About</Link>
+                    <div className='absolute select-none bg-slate-100 border-slate-300 border rounded-sm top-14 left-[-30px] sm:w-60 w-[175px] z-10'>
+                        <ul className='flex flex-col gap-2 text-sm font-semibold md:font-normal md:text-base relative pt-6'>
+                            <Link onClick={() => setShowHamburger(false)} to="/" className='border-b border-gray-300 sm:px-4 px-3 pb-2 hover:shadow-md' >Home</Link>
+                            <Link onClick={() => setShowHamburger(false)} to="/products/all" className='border-b border-gray-300 sm:px-4 px-3 py-2 hover:shadow-md' >Products</Link>
+                            <Link onClick={() => setShowHamburger(false)} to="/contact" className='border-b border-gray-300 sm:px-4 px-3 py-2 hover:shadow-md' >Contact</Link>
+                            <Link onClick={() => setShowHamburger(false)} to="/about" className='border-b border-gray-300 sm:px-4 px-3 py-2 hover:shadow-md' >About</Link>
                             <li> 
                                 <div
                                     onClick={(e) => handleDropdown(e)}
-                                    className='flex justify-between cursor-pointer select-none py-2 px-4 border-b border-gray-300 hover:shadow-md'>
+                                    className='flex justify-between cursor-pointer select-none py-2 sm:px-4 px-3 border-b border-gray-300 hover:shadow-md'>
                                     <h2>Category</h2>
                                     <span><i className="fa-solid fa-chevron-right"></i></span>
                                     {isDropdown && (
                                         <div
-                                            className='absolute text-sm font-semibold md:font-normal md:text-base border top-14 left-full ml-1 select-none rounded-sm bg-slate-100 border-slate-300 sm:w-60 min-w-[125px] z-10'>
+                                            className='absolute text-sm font-semibold md:font-normal md:text-base border top-0 left-full ml-1 select-none rounded-sm bg-slate-100 border-slate-300 sm:w-60 w-[170px] z-10'>
                                             {
                                                 Category.map((category) => {
                                                     return (
@@ -97,7 +95,7 @@ function Header() {
                                                             onClick={() => setShowHamburger(false)}
                                                             to={`/category/${category.slug}`}
                                                             key={crypto.randomUUID()} 
-                                                            className='border px-4 py-3 hover:shadow-md flex justify-between'
+                                                            className='border sm:px-4 px-3 py-3 hover:shadow-md flex justify-between'
                                                             ><span>{category.name}</span> 
                                                                 <i className="hidden sm:flex fa-solid fa-circle-chevron-right"></i>
                                                         </NavLink>
@@ -112,14 +110,15 @@ function Header() {
                                 <div
                                     onClick={(e) => handleUserDropdown(e)}
                                     className='relative cursor-pointer select-none'>
-                                        <h2 className='hover:bg-slate-100 px-4 m-2 py-2 rounded-full'> <i className="fa-solid fa-user pr-2 "></i>
-                                            { activeStatus.status ? activeStatus.user.name : 'User'}
+                                        <h2 className='hover:bg-slate-100 my-2 pb-2 text-start sm:px-4 px-3 rounded-full'>
+                                            <i className="fa-solid fa-user pr-2"></i>
+                                            { activeStatus.status ?  activeStatus.user.name : 'Login/Signup'}
                                         </h2>
                                         { userDropdown && 
                                             ( activeStatus.status ? (
                                                 <div onClick={handleLogout}
                                                     // className='cursor-pointer select-none border-2 border-slate-200 px-2 py-1 rounded-full hover:bg-slate-100'
-                                                    className='bg-slate-200 overflow-hidden absolute w-[80px] border mt-5 ml-2 top-full left-0 select-none rounded-lg bg-sl z-10 hover:bg-slate-100'
+                                                    className='bg-slate-200 overflow-hidden absolute w-[80px] border mt-5 ml-2 top-5 left-8 select-none bg-sl z-10 hover:bg-slate-100'
                                                     >
                                                     <p className='border px-2 py-1 hover:shadow-md flex justify-between'>Sign out</p>
                                                 </div>

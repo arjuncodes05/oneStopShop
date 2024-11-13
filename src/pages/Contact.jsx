@@ -1,20 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
+import tick from "../assets/Contact page/tick.gif"
+
+const web3formsContactForm = String(import.meta.env.VITE_APP_WEB3FORMS_CONTACT_FORM)
 
 function Contact() {
+
+  const [dialogueBox, setDialogueBox] = useState(false)
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", web3formsContactForm);
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: json
+    }).then((res) => res.json());
+
+    if (res.success) {
+      console.log("Success", res);
+    }
+
+    setDialogueBox(true)
+  };
+
   return (
     <div className='flex gap-4 flex-col lg:flex-row'>
-      <div className='border-2 rounded-sm p-4 lg:w-[50%] w-full lg:h-auto h-[450px]'>
+      <div className='relative border-2 rounded-sm p-4 lg:w-[50%] w-full lg:h-auto h-[450px]'>
         <h1 className='sm:text-4xl text-2xl font-bold mb-4'>Contact Us</h1>
         <h2 className='mb-4 font-semibold sm:text-lg text-md'>Feel free to ask anything!</h2>
         <hr />
-        <form action="">
+        <form onSubmit={onSubmit}>
           <div className='flex flex-col my-4 gap-1'>
             <label htmlFor="name">Name</label>
-            <input id='name' className='border rounded-sm p-1 outline-none' type="text" placeholder='Enter your name' />
+            <input id='name' name='name' className='border rounded-sm p-1 outline-none' type="text" placeholder='Enter your name' />
           </div>
           <div className='flex flex-col my-4 gap-1'>
             <label htmlFor="email">Email</label>
-            <input id='email' className='border rounded-sm p-1 outline-none' type="text" placeholder='Enter your email' />
+            <input id='email' name='email' className='border rounded-sm p-1 outline-none' type="text" placeholder='Enter your email' />
           </div>
           <div className='flex flex-col my-4 gap-1'>
             <label htmlFor="message">Message</label>
@@ -24,6 +55,15 @@ function Contact() {
             <button className='bg-green-600 hover:bg-green-700 py-2 px-4 font-bold text-white font-semobold rounded-full'>Send <i className="ml-2 fa-solid fa-circle-arrow-right"></i></button>
           </div>
         </form>
+
+       { dialogueBox && (<div className='bg-slate-100 w-[350px] flex flex-col items-center justify-center h-[250px] absolute top-[25%] right-[25%] rounded-lg shadow-2xl'>
+          <img src={tick} alt="Message Sent" className='w-[125px]'/>
+          <h4 className='font-bold'>Success</h4>
+          <p>Message sent successfully!</p>
+          <button
+            onClick={() => setDialogueBox(false)} 
+            className='p-2 px-4 bg-slate-200 hover:bg-slate-300 rounded-md font-semibold my-2'>Ok</button>
+        </div>)}
       </div>
 
       <div className='lg:w-[50%] w-full h-[450px] '>
