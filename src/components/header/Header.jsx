@@ -200,9 +200,9 @@ function Header() {
                                     ( activeStatus.status ? (
                                         <div onClick={handleLogout}
                                             // className='cursor-pointer select-none border-2 border-slate-200 px-2 py-1 rounded-full hover:bg-slate-100'
-                                            className='absolute w-[80px] border mt-5 ml-2 top-full left-0 select-none rounded-lg bg-sl z-10 hover:bg-slate-100'
+                                            className='absolute w-[80px] border mt-5 ml-2 top-full left-0 select-none  overflow-hidden rounded-lg bg-sl z-10 hover:bg-slate-100'
                                             >
-                                            <p className='border px-2 py-1 hover:shadow-md flex justify-between'>Sign out</p>
+                                            <p className='border px-2 py-1 hover:shadow-md flex justify-between bg-white'>Sign out</p>
                                         </div>
                                         ) : ( 
                                         <div className=' absolute border mt-6 top-full left-0 select-none rounded-lg bg-white z-10'>

@@ -22,7 +22,7 @@ function LoginAndRegister({name = '', setName = '', email, setEmail, password, s
           backgroundSize: 'cover',
           backgroundPOsition: 'center',
           }} 
-          className=' shadow-md shadow-slate-800 px-6  pt-10 pb-14'
+          className=' shadow-md shadow-slate-800 px-6 pt-4 pb-8 md:pt-10 md:pb-14'
         >
         <form onSubmit={handleSubmit} >
           {

@@ -9,10 +9,7 @@ function Discount({title, discount, bgColor='bg-black', textColor='text-white'})
                 backgroundImage: `url(${`https://images.macrumors.com/t/TkNh1oQ0-9TnnBjDnLyuz6yLkjE=/1600x0/article-new/2023/09/iPhone-15-General-Feature-Black.jpg`})`,
                 backgroundPosition: 'center',
             }}
-            className={`flex w-full 2xl:h-[700px] h-[550px] sm:px-8 px-4 py-4 items-end ${bgColor} ${textColor} gap-8 mb-4`}>
-            {/* <div className='lg:w-12/12 w-5/5 flex items-center '> */}
-                {/* <img src="https://images.macrumors.com/t/TkNh1oQ0-9TnnBjDnLyuz6yLkjE=/1600x0/article-new/2023/09/iPhone-15-General-Feature-Black.jpg" alt={`${title} image`} width='100%'/> */}
-            {/* </div> */}
+            className={`flex w-full 2xl:h-[600px] h-[550px] sm:px-8 px-4 py-4 items-end ${bgColor} ${textColor} gap-8 mb-4`}>
             <div className='px-10 py-4 backdrop-blur-2xl backdrop-opacity-70 hover:backdrop-opacity-90'>
                 <h3 className='lg:text-4xl md:text-2xl'>{title}</h3>
                 <h1 className='2xl:text-6xl md:text-6xl text-4xl font-extrabold lg:py-10 py-6'>{discount}</h1>

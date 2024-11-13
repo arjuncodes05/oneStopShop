@@ -12,7 +12,7 @@ import AllProducts from './pages/AllProducts.jsx'
 // redux store
 import { Provider } from 'react-redux'
 import store from './store/store.js'
-import Wishlist from './pages/wishlist.jsx'
+import Wishlist from './pages/Wishlist.jsx'
 import Category from './pages/Category.jsx'
 import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
