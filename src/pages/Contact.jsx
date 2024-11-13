@@ -56,7 +56,7 @@ function Contact() {
           </div>
         </form>
 
-       { dialogueBox && (<div className='bg-slate-100 w-[350px] flex flex-col items-center justify-center h-[250px] absolute top-[25%] right-[25%] rounded-lg shadow-2xl'>
+       { dialogueBox && (<div className='bg-slate-100 md:w-[350px] sm:w-[300px] w-[240px] flex flex-col items-center justify-center h-[250px] absolute top-0 right-[50%] translate-x-2/4	translate-y-1/2 rounded-lg shadow-xl'>
           <img src={tick} alt="Message Sent" className='w-[125px]'/>
           <h4 className='font-bold'>Success</h4>
           <p>Message sent successfully!</p>

@@ -11,7 +11,7 @@ function Footer() {
                 <h3 className='text-2xl font-bold mb-4'>Exclusive</h3>
     
                 <h4 className='mb-2'>Subscribe</h4>
-                <div className='py-2 flex justify-center items-center rounded-full overflow-hidden bg-white w-[220px]'>
+                <div className='py-2 flex items-center rounded-full overflow-hidden bg-white w-[240px]'>
                     <input type="text" placeholder='Enter an email' className='outline-none text-black pl-4' />
                     <i className="fa-solid fa-paper-plane text-black cursor-pointer pr-4"></i>
                 </div>
