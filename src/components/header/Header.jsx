@@ -6,7 +6,7 @@ import { fetchAllProducts } from '../../store/Slices/productsSlice';
 import Category from './Category';
 import authService from '../../appwrite/AuthService';
 import { login, logout } from '../../store/Slices/authSlice';
-import {fetchCartItems } from '../../store/Slices/cartSlice';
+import {addToCart, fetchCartItems } from '../../store/Slices/cartSlice';
 import NavbarOption from './NavbarOption';
 
 function Header() {
@@ -26,6 +26,11 @@ function Header() {
         // load cart items from appwrite db        
         if(activeStatus.status){
             dispatch(fetchCartItems())
+        } else {
+            const initialCartItems = JSON.parse(localStorage.getItem('cart'))
+            if(initialCartItems){
+                initialCartItems.forEach((item) => dispatch(addToCart(item)))
+            }
         }
     }, []);
     
@@ -118,7 +123,7 @@ function Header() {
                                             ( activeStatus.status ? (
                                                 <div onClick={handleLogout}
                                                     // className='cursor-pointer select-none border-2 border-slate-200 px-2 py-1 rounded-full hover:bg-slate-100'
-                                                    className='bg-slate-200 overflow-hidden absolute w-[80px] border mt-5 ml-2 top-5 left-8 select-none bg-sl z-10 hover:bg-slate-100'
+                                                    className='hover:bg-slate-200 overflow-hidden absolute w-[80px] border mt-6 ml-2 top-5 left-8 select-none bg-sl z-10 bg-slate-100'
                                                     >
                                                     <p className='border px-2 py-1 hover:shadow-md flex justify-between'>Sign out</p>
                                                 </div>

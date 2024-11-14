@@ -43,7 +43,7 @@ function Carousel () {
             <Discount url={iPhone} title="Smartphone Deals" discount="Upgrade Your Tech – Save Big on Smartphones!"/>
         </SwiperSlide>
         <SwiperSlide>
-            <Discount url={smartTv} title="iPhone 15" discount="Bring Home the Big Screen – Discounts on All TVs!"/>
+            <Discount url={smartTv} title="TVs at New Year Prices" discount="Bring Home the Big Screen – Discounts on All TVs!"/>
         </SwiperSlide>
       </Swiper>
     </>

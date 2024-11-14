@@ -4,13 +4,12 @@ import cartAndWishlistDB from "../../appwrite/CartAndWishlistDB";
 export const fetchCartItems = createAsyncThunk('cart/fetchCartItems', async() => {    
     try {
         const response = await cartAndWishlistDB.getCartItems()
-        console.log(response);
-
         // sync with local storage
         const cartItemsFromLocalStorage = JSON.parse(localStorage.getItem('cart'))
         if(cartItemsFromLocalStorage){
             return syncDBandLS(cartItemsFromLocalStorage, response.documents)
         } else {
+            localStorage.setItem('cart', JSON.stringify(response.documents))
             return response.documents
         }
     } catch (error) {
@@ -27,10 +26,10 @@ const cartSlice = createSlice({
         error: ''
     },
     reducers: {
-        addToCart(state, action){  
+        addToCart(state, action){ 
             const alreadyExists = state.list.find((item) => item.id === action.payload.id)
             if(!alreadyExists){  
-                state.list.push({...action.payload, quantity: 1})
+                state.list.push({...action.payload})
             }
         },
         increaseCartQuantity(state, action){
@@ -49,8 +48,6 @@ const cartSlice = createSlice({
             })
         },
         removeCartItem(state, action){
-            console.log(action);
-            
             state.list = state.list.filter((item) => {
                 return item.id !== action.payload.id
             })
@@ -62,8 +59,6 @@ const cartSlice = createSlice({
                 state.loading = true;
             })
             .addCase(fetchCartItems.fulfilled, (state, action) => {
-                console.log(action);
-                
                 state.loading = false;4
                 state.list = action.payload
                 state.error = ''
@@ -88,10 +83,18 @@ function syncDBandLS(cartItemsFromLocalStorage, response){
     let filter = [...response]
     cartItemsFromLocalStorage.forEach((item) => {        
         if(!response.find((dbItem) => dbItem.id === item.id)){    
-            cartAndWishlistDB.addCartItems(item)
+            const ifAlreadyInDb = async () => {
+                const dbItems = await cartAndWishlistDB.getCartItems()
+                const result = dbItems.documents.find((prd) => item.id === prd.id)
+                if(!result){
+                    cartAndWishlistDB.addCartItems(item)
+                }
+            }
+            ifAlreadyInDb()
             filter.push(item)        
         }                
     })
     localStorage.removeItem("cart");
+    localStorage.setItem('cart', JSON.stringify(filter))
     return filter
 }

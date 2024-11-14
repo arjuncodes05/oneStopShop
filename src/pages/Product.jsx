@@ -45,7 +45,8 @@ function Product() {
                                 id: item.id,
                                 title: item.title,
                                 image: item.images[0],
-                                price: Math.floor(item.price)
+                                price: Math.floor(item.price),
+                                quantity: 1
                             }))} }
                         className='text-md md:text-xl xl:text-2xl font-semibold bg-black xl:w-48 md:w-36 w-32 hover:bg-gray-700 text-white text-center py-2 rounded-full'>{addToCartBtnText}</button>
                     <p className='text-sm text-center md:text-md font-semibold' >{(item.price * 84) > 1000 ? 'Free Delivery' : '+₹140 for delivery'}</p>
