@@ -73,7 +73,7 @@ function Header() {
                     onClick={() => setShowHamburger(prev => !prev)}
                     ><i className={`${!showHamburger ? 'fa-bars' : 'fa-angles-down'} fa-solid  text-2xl`}></i></h1>
                 { showHamburger && (
-                    <div className='absolute select-none bg-slate-100 border-slate-300 border rounded-sm top-14 left-[-30px] sm:w-60 w-[175px] z-10'>
+                    <div className='absolute select-none bg-slate-100 border-slate-300 border rounded-sm top-14 left-[-15px] sm:w-60 min-w-[170px] z-10'>
                         <ul className='flex flex-col gap-2 text-sm font-semibold md:font-normal md:text-base relative pt-6'>
                             <Link onClick={() => setShowHamburger(false)} to="/" className='border-b border-gray-300 sm:px-4 px-3 pb-2 hover:shadow-md' >Home</Link>
                             <Link onClick={() => setShowHamburger(false)} to="/products/all" className='border-b border-gray-300 sm:px-4 px-3 py-2 hover:shadow-md' >Products</Link>
