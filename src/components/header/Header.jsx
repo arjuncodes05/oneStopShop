@@ -63,7 +63,7 @@ function Header() {
                 setIsDropdown(false)
                 setUserDropdown(false)
             }}
-            className='py-4 2xl:px-44 lg:px-26 md:px-20 px-10
+            className='py-4 2xl:px-44 lg:px-26 md:px-20 sm:px-10 px-6
                         shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] 
                         flex gap-2 justify-between items-center'>
 
@@ -149,8 +149,8 @@ function Header() {
 
             {/* logo */}
             <div className='lg:w-auto w-full sm:text-center flex items-center justify-center '>
-                <h1 className='font-bold text-2xl h-10 flex items-center'>
-                    <Link to="/" ><img src={logo} alt="" className='w-40' /></Link>
+                <h1 className='font-bold text-2xl h-10 flex items-center justify-center'>
+                    <Link to="/" ><img src={logo} alt="" className='sm:w-40 w-28' /></Link>
                 </h1>
             </div>
 
