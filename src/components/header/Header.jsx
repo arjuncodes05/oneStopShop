@@ -56,6 +56,7 @@ function Header() {
         if(res){
             dispatch(logout())
             localStorage.removeItem("auth");
+            localStorage.removeItem('cart')
             navigate('/')
         }
     }

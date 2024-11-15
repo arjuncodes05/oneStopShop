@@ -25,18 +25,20 @@ function cartOrWishlist({data = []}) {
 
         <div className='flex gap-4 flex-col lg:flex-row' >
             <div className={`${cartorWishlist.pathname.includes('wishlist') ? 'w-full' : 'lg:w-[60%] w-full'}`}>
-                            <div className='border-2 rounded-md flex px-4 items-center bg-red-50 mb-4 md:text-2xl text-base'>
-                                    <h2 className='xl:w-[60%] w-[65%] text-start font-bold'>Item</h2>
+                            <div className='border-2 rounded-md flex px-4 items-center bg-red-50 mb-4 md:text-2xl sm:text-base'>
+                                <div className='xl:w-[60%] w-[65%] text-start font-bold'>
+                                    <h2 className='ml-8'>Item</h2>
+                                </div>
                                 <div className='w-[40%] flex'>
-                                    <h3 className='w-[50%] font-bold'>Price</h3>
-                                    <h3 className='w-[50%] font-bold'>{cartorWishlist.pathname.includes('wishlist') ? 'Buy Now' : 'Total'}</h3>
+                                    <h3 className='w-[50%] font-bold ml-2'>Price</h3>
+                                    <h3 className='w-[50%] font-bold ml-2'>{cartorWishlist.pathname.includes('wishlist') ? 'Buy' : 'Total'}</h3>
                                 </div>
                             </div>
                 {
                     data.map((product) => {
                         {/* items */}
                         return (
-                            <div key={product.id} className='border-2 rounded-md flex md:px-4 px-2 items-center bg-red-50 mb-2 relative'>
+                            <div key={product.id} className='border-2 rounded-md flex gap-4 md:gap-0 md:justify-center md:px-4 px-2 items-center  bg-red-50 mb-2 relative'>
                                 <div onClick={() => {
                                     cartorWishlist.pathname.includes('wishlist') ? dispatch(removeFromWishlist(product.id, product.$id)) : dispatch(removeCartItem({id: product.id, documentId: product.$id}))
                                 }} className='absolute top-[-15%] right-[-1%] text-lg hover:text-gray-700 '>
@@ -64,7 +66,7 @@ function cartOrWishlist({data = []}) {
 
                                     </div>
                                 </div>
-                                <div className='xl:w-[40%] w-[35%] flex lg:text-md md:text-sm text-xs font-bold'>
+                                <div className='xl:w-[40%] w-[35%] items-center flex lg:text-md md:text-sm text-xs font-bold'>
                                     <div className='w-[50%]'>
                                         <h3>₹{Math.floor(product.price * 84)}</h3>
                                     </div>
@@ -78,11 +80,12 @@ function cartOrWishlist({data = []}) {
                                                             id: product.id,
                                                             title: product.title,
                                                             image: product.image,
-                                                            price: Math.floor(product.price)
+                                                            price: Math.floor(product.price),
+                                                            quantity: 1
                                                         }))
                                                         dispatch(removeFromWishlist(product.id))
                                                     }}
-                                                    className='bg-green-600 hover:bg-green-700 rounded-full p-1 px-2 text-white text-md'>Move to Cart</button>
+                                                    className='bg-green-600 hover:bg-green-700 rounded-full p-1 px-2 text-white text-md'> <span className='md:flex hidden'>Move to Cart</span> <span className='md:hidden flex'>Buy</span> </button>
                                             ) : (
                                                 <div className='w-[50%]'>
                                                     <h3>₹{Math.floor(+product.quantity * (product.price * 84))}</h3>
@@ -122,7 +125,7 @@ function cartOrWishlist({data = []}) {
         </div>
             {
                 cartorWishlist.pathname.includes('wishlist') && (
-                    <div className='bg-red-50 border-2 text-end font-bold w-[60%] p-2 pr-4'>
+                    <div className='bg-red-50 border-2 text-end font-bold w-full p-2 pr-4'>
                         <h2>Total: <span>{wishlistSubtotal}</span></h2>
                     </div>
                 )

@@ -7,7 +7,6 @@ function Product() {
     const param = useParams()    
     const products = useSelector(state => state.products)
     let item = products.find((product) => product.id === +param.id)
-    console.log(item);
     
     const [addToCartBtnText, setAddToCartBtnText] = useState('Add to Cart')
 

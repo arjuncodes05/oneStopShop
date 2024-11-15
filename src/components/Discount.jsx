@@ -23,7 +23,7 @@ function Discount({url, title, discount, bgColor='bg-black', textColor='text-whi
                 </div>                
                 <p className='mt-2 leading-relaxed'>Starting 25th Dec 2024 <br /> to 3rd Jan 2025</p>
             </div>
-            <div className='px-10 sm:h-[300px] leading-relaxed w-full ml-2 py-4 bg-black sm:bg-transparent sm:backdrop-blur-2xl backdrop-opacity-70 hover:backdrop-opacity-90'>
+            <div className='px-10 sm:h-[300px] md:h-[250px] leading-relaxed w-full lg:w-[75%] xl:w-full  ml-2 py-4 bg-black sm:bg-transparent sm:backdrop-blur-2xl backdrop-opacity-70 hover:backdrop-opacity-90'>
                 <h3 className='lg:text-2xl md:text-2xl'>{title}</h3>
                 <h1 className=' 2xl:text-6xl md:text-4xl sm:text-4xl text-xl font-extrabold py-4'>{discount}</h1>
                 <div className='text-white text-base lg:text-2xl bg-gray-700 w-fit md:px-4 md:py-2 mt-2 py-1 px-2 rounded-full hover:bg-gray-800'>
