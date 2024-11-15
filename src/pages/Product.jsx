@@ -31,7 +31,7 @@ function Product() {
             <h1 className='font-bold text-xl sm:text-2xl mb-4 border-b-2 pb-2'>{item.title}</h1>
             <div className='flex flex-wrap items-center gap-5 my-4 flex-row justify-between'>
                 <div className='m-auto md:m-0'>
-                    <h2 className='text-md md:text-xl xl:text-2xl font-semibold bg-gray-300 xl:w-48 md:w-36 w-32 rounded-full md:px-4 px-2 text-center py-2 cursor-default'>Price: ₹{Math.floor(item.price * 84)}</h2>
+                    <h2 className='text-md md:text-lg xl:text-2xl font-semibold bg-gray-300 xl:w-48 md:w-36 w-32 rounded-full md:px-4 px-2 text-center py-2 cursor-default'>Price: ₹{Math.floor(item.price * 84)}</h2>
                     <p className='text-sm text-center md:text-md font-semibold' >Inclusive of all taxes</p>
                 </div>
                 <div className='m-auto md:m-0'>
@@ -48,7 +48,7 @@ function Product() {
                                 price: Math.floor(item.price),
                                 quantity: 1
                             }))} }
-                        className='text-md md:text-xl xl:text-2xl font-semibold bg-black xl:w-48 md:w-36 w-32 hover:bg-gray-700 text-white text-center py-2 rounded-full'>{addToCartBtnText}</button>
+                        className='text-md md:text-lg xl:text-2xl font-semibold bg-black xl:w-48 md:w-36 w-32 hover:bg-gray-700 text-white text-center py-2 rounded-full'>{addToCartBtnText}</button>
                     <p className='text-sm text-center md:text-md font-semibold' >{(item.price * 84) > 1000 ? 'Free Delivery' : '+₹140 for delivery'}</p>
                 </div>
             </div>

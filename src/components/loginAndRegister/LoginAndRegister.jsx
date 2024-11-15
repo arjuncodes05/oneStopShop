@@ -3,7 +3,7 @@ import InputField from '../../components/InputField'
 import loginBoxBg from "../../assets/loginBoxBg.jpg"
 import { Link, useLocation } from 'react-router-dom'
 
-function LoginAndRegister({name = '', setName = '', email, setEmail, password, setPassword, handleSubmit, loading}) {
+function LoginAndRegister({loginError, error, setError, name = '', setName = '', email, setEmail, password, setPassword, handleSubmit, loading}) {
 
    const pageIs =  useLocation().pathname
 
@@ -22,15 +22,16 @@ function LoginAndRegister({name = '', setName = '', email, setEmail, password, s
           backgroundSize: 'cover',
           backgroundPOsition: 'center',
           }} 
-          className=' shadow-md shadow-slate-800 px-6 pt-4 pb-8 md:pt-10 md:pb-14'
+          className='shadow-md shadow-slate-800 px-6 pt-4 pb-8 md:pt-10 md:pb-14'
         >
         <form onSubmit={handleSubmit} >
           {
           pageIs.includes('signup') &&
-              <InputField label='Name' setValue={setName} getValue={name} id='name' placeholder='Enter your name' labelColor='text-[#FF204E]' />
+              <InputField error={error} setError={setError} label='Name' setValue={setName} getValue={name} id='name' placeholder='Enter your name' labelColor='text-[#FF204E]' />
           }
-            <InputField setValue={setEmail} getValue={email} label='Email' id='email' placeholder='Enter your email' labelColor='text-[#FF204E]' />
-            <InputField setValue={setPassword} getValue={password} label='Password' id='password' type='password' placeholder='Enter your password' labelColor='text-[#FF204E]' />
+            <InputField error={error} setError={setError} setValue={setEmail} getValue={email} label='Email' id='email' placeholder='Enter your email' labelColor='text-[#FF204E]' />
+            <InputField error={error} setError={setError} setValue={setPassword} getValue={password} label='Password' id='password' type='password' placeholder='Enter your password' labelColor='text-[#FF204E]' />
+            <p className='text-red-400 text-sm text-center h-1'>{loginError || ''}</p>
             <button className='bg-[#e62b50] hover:bg-[#FF204E] p-2 rounded-full w-full my-4'>{pageIs.includes('signup') ? loading ? 'Signing up...' : 'Sign up' : loading ? 'Logging in...' : 'Login'} </button>
             <div className='text-center'>
                 <Link className=' text-white hover:text-slate-400 underline' to={pageIs.includes('signup') ? '/login' : '/signup'} > {pageIs.includes('signup') ? 'Already have an account?' : 'Don\'t have an account?'}</Link>

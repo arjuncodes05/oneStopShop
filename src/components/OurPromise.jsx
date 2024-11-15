@@ -18,19 +18,19 @@ function OurPromise() {
                 lg:gap-16 gap-12 font-bold text-lg xl:text-xl'>
                     <div className='flex flex-col justify-center items-center gap-4'>
                         <img className='xl:w-24 w-20 hover:scale-105' src={freeDelivery} alt="" />
-                        <h3>Free Shipping over 75$</h3>
+                        <h3>Free Shipping over ₹1000</h3>
                     </div>
                     <div className='flex flex-col justify-center items-center gap-4'>
                         <img className='xl:w-24 w-20 hover:scale-105' src={returnBox} alt="" />
-                        <h3>Free Shipping over 75$</h3>
+                        <h3>Easy return</h3>
                     </div>
-                    <div className='flex flex-col justify-center items-center gap-4'>
+                    <div className='flex flex-col justify-center text-center items-center gap-4'>
                         <img className='xl:w-24 w-20 hover:scale-105' src={charity} alt="" />
-                        <h3>Free Shipping over 75$</h3>
+                        <h3>1% Revenue to Charitable Initiatives</h3>
                     </div>
                     <div className='flex flex-col justify-center items-center gap-4'>
                         <img className='xl:w-24 w-20 hover:scale-105' src={customerService} alt="" />
-                        <h3>Free Shipping over 75$</h3>
+                        <h3>24/7 Customer support</h3>
                     </div>
             </div>
         </div>

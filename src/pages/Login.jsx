@@ -7,20 +7,8 @@ import { login } from '../store/Slices/authSlice'
 
 function Login() {
 
-  const handleLogout = async () => {
-    const res = await authService.signout()
-    console.log(res);
-    
-    if(res){
-        dispatch(logout())
-        navigate('/')
-    }
-}
-
-// handleLogout()
-
   const [loading, setLoading] = useState(false)
-  // const [error, setError] = useState(true)
+  const [loginError, setLoginError] = useState('')
 
 
   const [email, setEmail] = useState('')
@@ -33,20 +21,23 @@ function Login() {
     e.preventDefault()
     setLoading(true)
     const loggedIn = await authService.login(email, password)
-    loading && console.log('loading');
-    
+
     if(loggedIn){
       const response = await authService.getUser() 
+
       if(response){
         const {name, email} = response
         dispatch(login({name, email}))
         setLoading(false)
         navigate('/')
-      }
+      } 
+    } else {
+      setLoginError('Invalid credentials')
+      setLoading(false)
     }
   }
 
-  return <LoginAndRegister loading={loading} handleSubmit={handleLoginSubmit} email={email} setEmail={setEmail} password={password} setPassword={setPassword} />
+  return <LoginAndRegister loginError={loginError} loading={loading} handleSubmit={handleLoginSubmit} email={email} setEmail={setEmail} password={password} setPassword={setPassword} />
 }
 
 export default Login
