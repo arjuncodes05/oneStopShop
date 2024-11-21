@@ -2,7 +2,9 @@ import {Client, Databases, ID, Query} from "appwrite"
 import conf from "./conf"
 
 // get current userId from local storage
-let {user: {userid}} = JSON.parse(localStorage.getItem('auth'))
+if(JSON.parse(localStorage.getItem('auth'))){
+    let {user: {userid}} = JSON.parse(localStorage.getItem('auth'))
+}
 
 export class CartAndWishlistDB{
     client = new Client()
