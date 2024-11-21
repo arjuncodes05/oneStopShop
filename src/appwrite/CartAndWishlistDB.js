@@ -1,10 +1,14 @@
-import {Client, Databases, ID} from "appwrite"
+import {Client, Databases, ID, Query} from "appwrite"
 import conf from "./conf"
+
+// get current userId from local storage
+let {user: {userid}} = JSON.parse(localStorage.getItem('auth'))
 
 export class CartAndWishlistDB{
     client = new Client()
     database;
     bucket;
+    
 
     constructor(){
         this.client.setEndpoint(conf.appwriteUrl).setProject(conf.appwriteProjectId)
@@ -13,7 +17,11 @@ export class CartAndWishlistDB{
 
     async getCartItems(){
         try{
-           return await this.databases.listDocuments(conf.appwriteDatabaseId, conf.appwriteCartCollectionId)
+           return await this.databases.listDocuments(
+            conf.appwriteDatabaseId, 
+            conf.appwriteCartCollectionId,
+            [Query.equal("userid", userid)]
+        )
         }catch(error){
             console.log("Appwrite service :: getProducts() :: ", error);
             return false
@@ -27,7 +35,7 @@ export class CartAndWishlistDB{
                 conf.appwriteCartCollectionId,
                 ID.unique(),
                 {
-                    id, title, image, price
+                    id, title, image, price, userid
                 }
             );
         } catch (error) {
