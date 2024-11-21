@@ -1,13 +1,6 @@
 import {Client, Databases, ID, Query} from "appwrite"
 import conf from "./conf"
 
-// get current userId from local storage
-let userid = ''
-if(JSON.parse(localStorage.getItem('auth'))){
-    let {user: {currentUserid}} = JSON.parse(localStorage.getItem('auth'))
-    userid = currentUserid
-}
-
 export class CartAndWishlistDB{
     client = new Client()
     database;
@@ -21,6 +14,7 @@ export class CartAndWishlistDB{
 
     async getCartItems(){
         try{
+            let {user: {currentUserid: userid}} = JSON.parse(localStorage.getItem('auth'))
            return await this.databases.listDocuments(
             conf.appwriteDatabaseId, 
             conf.appwriteCartCollectionId,
@@ -34,6 +28,7 @@ export class CartAndWishlistDB{
 
     async addCartItems({id, title, image, price}){
         try {
+            let {user: {currentUserid: userid}} = JSON.parse(localStorage.getItem('auth'))
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCartCollectionId,
