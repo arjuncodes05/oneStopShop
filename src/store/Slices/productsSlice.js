@@ -25,8 +25,6 @@ export const fetchAllProducts = () => (dispatch) => {
     })
 }
 
-// const productsForExploreSelctionInHomepage = state => state.products.slice(0, 10)
-// export const ExploreSectionProducts = createSelector(productsForExploreSelctionInHomepage, (state) => state)
 
 const productsForExploreSelctionInHomepage = state  => state.products
 export const ExploreSectionProducts = createSelector(productsForExploreSelctionInHomepage, (products) => products.filter((product, i) => i < 10))

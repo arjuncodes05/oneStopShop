@@ -30,8 +30,8 @@ function Signup() {
       if(loggedIn){
         const response = await authService.getUser()
         if(response){
-          const {name, email, $id : userid} = response
-          dispatch(login({name, email, userid}))
+          const {name, email, $id : currentUserid} = response
+          dispatch(login({name, email, currentUserid}))
           setLoading(false)
           navigate('/')
         }

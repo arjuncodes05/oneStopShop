@@ -26,9 +26,9 @@ function Login() {
       const response = await authService.getUser() 
 
       if(response){
-        const {name, email, $id : userid} = response
+        const {name, email, $id : currentUserid} = response
         
-        dispatch(login({name, email, userid}))
+        dispatch(login({name, email, currentUserid}))
         setLoading(false)
         navigate('/')
       } 

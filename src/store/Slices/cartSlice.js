@@ -79,21 +79,21 @@ export default cartSlice.reducer
 
 
 
-function syncDBandLS(cartItemsFromLocalStorage, response){
+async function syncDBandLS(cartItemsFromLocalStorage, response){
     let filter = [...response]
-    cartItemsFromLocalStorage.forEach((item) => {        
-        if(!response.find((dbItem) => dbItem.id === item.id)){    
-            const ifAlreadyInDb = async () => {
-                const dbItems = await cartAndWishlistDB.getCartItems()
+
+    // getting all db items once before looping
+    const dbItems = await cartAndWishlistDB.getCartItems()
+
+     for (const item of cartItemsFromLocalStorage) {   
+        if(!response.find((dbItem) => dbItem.id === item.id)){      
                 const result = dbItems.documents.find((prd) => item.id === prd.id)
                 if(!result){
                     cartAndWishlistDB.addCartItems(item)
                 }
             }
-            ifAlreadyInDb()
-            filter.push(item)        
-        }                
-    })
+            filter.push(item)                       
+    }
     localStorage.removeItem("cart");
     localStorage.setItem('cart', JSON.stringify(filter))
     return filter
